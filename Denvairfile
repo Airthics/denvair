@@ -1,0 +1,74 @@
+# Denvair, your development environment made simple.
+# Copyright (C) 2021, Francesco Sardone <dev.airscript@gmail.com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+vagrantApiVersion: 2
+box: ubuntu/focal64
+provider: virtualbox
+plugins:
+  - vagrant-reload
+  - vagrant-disksize
+  - vagrant-env
+machines:
+  - vm: ubuntu_m4affd
+    name: ubm4affd
+    hostname: ubm4affd
+    memory: 4096
+    cpus: 2
+    disksize: 50GB
+    hostSyncedFolder: ../Vagrant/Shared/ubm4affd
+    guestSyncedFolder: /sync/ubm4affd
+    network: 192.168.64.32
+    provisioning: 
+      - update
+      - nodejs
+      - python
+      - ansible
+      - postgres
+      - mongo
+      - docker
+      - reload
+      - kubernetes
+      - upgrade
+  - vm: ubuntu_w5ddef
+    name: ubw5ddef
+    hostname: ubw5ddef
+    memory: 1024
+    cpus: 1
+    disksize: 50GB
+    hostSyncedFolder: ../Vagrant/Shared/ubw5ddef
+    guestSyncedFolder: /sync/ubw5ddef
+    network: 192.168.64.33
+    provisioning: 
+      - update
+      - nodejs
+      - python
+      - ansible
+      - upgrade
+  - vm: ubuntu_w6abe3
+    name: ubw6abe3
+    hostname: ubw6abe3
+    memory: 1024
+    cpus: 1
+    disksize: 50GB
+    hostSyncedFolder: ../Vagrant/Shared/ubw6abe3
+    guestSyncedFolder: /sync/ubw6abe3
+    network: 192.168.64.34
+    provisioning: 
+      - update
+      - nodejs
+      - python
+      - ansible
+      - upgrade
