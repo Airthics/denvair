@@ -1,8 +1,8 @@
 ---
-name: "\U0001F480 Remove"
-about: Request a feature removal.
-title: "\U0001F480 Remove Title"
-labels: ''
+name: "✅ Test"
+about: Suggest a test for this project
+title: "✅ Test"
+labels: "✅ Test"
 assignees: ''
 
 ---
