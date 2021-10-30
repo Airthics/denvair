@@ -13,6 +13,8 @@ Compile all the informations written below to send a legitimate pull request to 
 - [ ] 💀 Remove
 - [ ] 🐛 Bugfix
 - [ ] 🎉 Release
+- [ ] 🛠 Refactor
+- [ ] ✅ Test
 - [ ] 🤔 Other
 
 ### 🔗 Linked Issue
