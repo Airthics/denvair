@@ -1,0 +1,33 @@
+# Denvair, your development environment made simple.
+# Copyright (C) 2021, Francesco Sardone <dev.airscript@gmail.com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+vagrantApiVersion: 2
+box: ubuntu/focal64
+provider: virtualbox
+plugins:
+  - vagrant-reload
+  - vagrant-disksize
+  - vagrant-env
+machines:
+  - vm: ubuntu_tfdaa1
+    name: ubtfdaa1
+    hostname: ubtfdaa1
+    memory: 1024
+    cpus: 1
+    disksize: 50GB
+    hostSyncedFolder: ../Vagrant/Shared/ubtfdaa1
+    guestSyncedFolder: /sync/ubtfdaa1
+    network: 192.168.64.128

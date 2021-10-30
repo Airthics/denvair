@@ -17,8 +17,10 @@
 # Importing dependencies.
 require "yaml"
 
-# Loading Denvairfile configs.
-configs = YAML.load_file("./Denvairfile");
+# Loading Denvairfile or Tenvairfile configs.
+configs = ENV["DENVAIR_ENV"] == "test" ? 
+  YAML.load_file("./Tenvairfile") : 
+  YAML.load_file("./Denvairfile");
 
 # Declaring global variables.
 hasPluginBeenInstalled = false
@@ -60,11 +62,13 @@ Vagrant.configure(configs["vagrantApiVersion"]) do |config|
         vb.cpus = machine["cpus"]
       end
 
-      machine["provisioning"].each do |provision|
-        if provision == "reload"
-          subconfig.vm.provision :reload
-        else
-          subconfig.vm.provision "shell", privileged: false, path: "./scripts/#{provision}.sh"
+      if machine["provisioning"]
+        machine["provisioning"].each do |provision|
+          if provision == "reload"
+            subconfig.vm.provision :reload
+          else
+            subconfig.vm.provision "shell", privileged: false, path: "./scripts/#{provision}.sh"
+          end
         end
       end
     end
