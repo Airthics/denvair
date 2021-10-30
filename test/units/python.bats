@@ -16,26 +16,6 @@
 
 #!/bin/sh
 
-# Declaring variables.
-SUPER="sudo"
-DRY_RUN=""
-echo $1
-
-# Checking if we're running script in test environment.
-if [ $1 = true ]; then
-    SUPER=""
-    DRY_RUN="--dry-run"
-fi
-
-echo "Installing Python..."
-if ! $SUPER apt -y install python3-pip $DRY_RUN ; then
-    exit 1
-fi
-
-if ! $SUPER apt install -y build-essential libssl-dev libffi-dev python3-dev $DRY_RUN ; then
-    exit 1
-fi
-
-if ! $SUPER apt install -y python3-venv $DRY_RUN ; then
-    exit 1
-fi
+@test "Installing Python" {
+  ./scripts/python.sh true
+} 
