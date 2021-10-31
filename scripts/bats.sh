@@ -14,8 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+#!/bin/sh
+
 echo "Installing bats..."
 git clone https://github.com/bats-core/bats-core.git
+pwd
 cd bats-core
 ./install.sh $HOME
 rm -rf ../bats-core
+source ~/.bashrc

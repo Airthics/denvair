@@ -16,23 +16,6 @@
 
 #!/bin/sh
 
-# Declaring variables.
-SUPER="sudo"
-DRY_RUN=""
-
-# Checking if we're running script in test environment.
-if [ $1 = true ]; then
-  SUPER=""
-  DRY_RUN="--dry-run"
-fi
-
-echo "Installing Ansible..."
-if ! $SUPER apt install -y software-properties-common $DRY_RUN ; then
-  exit 1
-fi
-
-sudo add-apt-repository --yes --update ppa:ansible/ansible
-
-if ! $SUPER apt install -y ansible $DRY_RUN ; then
-  exit 1
-fi
+@test "Installing Ansible" {
+  ./scripts/ansible.sh true
+} 
