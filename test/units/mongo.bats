@@ -16,9 +16,6 @@
 
 #!/bin/sh
 
-echo "Installing bats..."
-git clone https://github.com/bats-core/bats-core.git
-cd bats-core
-sudo ./install.sh /usr/local
-sudo rm -rf ../bats-core
-source ~/.bashrc
+@test "Installing Mongo" {
+  ./scripts/mongo.sh true
+} 
