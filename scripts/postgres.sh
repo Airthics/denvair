@@ -14,8 +14,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+#!/bin/sh
+
+# Declaring variables.
+SUPER="sudo"
+DRY_RUN=""
+
+# Checking if we're running script in test environment.
+if [ $1 = true]; then
+  SUPER=""
+  DRY_RUN="--dry-run"
+fi
+
 echo "Installing Postgres..."
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt update
-sudo apt -y install postgresql
+
+if ! $SUPER apt -y install postgresql $DRY_RUN ; then
+  exit 1
+fi

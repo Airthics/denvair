@@ -16,9 +16,6 @@
 
 #!/bin/sh
 
-echo "Installing bats..."
-git clone https://github.com/bats-core/bats-core.git
-cd bats-core
-./install.sh $HOME
-rm -rf ../bats-core
-source ~/.bashrc
+@test "Installing Postgres" {
+  ./scripts/postgres.sh true
+} 
